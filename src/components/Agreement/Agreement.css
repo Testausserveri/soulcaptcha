@@ -1,0 +1,36 @@
+.agreement {
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9;
+}
+
+.agreementFill {
+    position: fixed;
+    background-color: #C4C4C4;
+}
+
+.agreementVisible {
+    pointer-events: all;
+    opacity: 1;
+}
+
+.topPart, .bottomPart {
+    position: fixed;
+    top: 0;
+    left: 2rem;
+    width: calc(100% - 4rem);
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-delay: 3s;
+}
+
+.agreementVisible .topPart, .agreementVisible .bottomPart {
+    opacity: 1;
+}
+
+.topPart>div {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+}
