@@ -6,25 +6,30 @@ function TopPart({details}) {
     const box = document.getElementsByClassName("signatureCanvas")[0]?.getBoundingClientRect()
     
     return (
-        <div className="topPart" style={{height: box?.top}}>
-            <Content>
-                <p>
-                    I, {details.firstName} {details.lastName}, herebly confirm that my slavery will begin today for the company Testausserveri.
-                </p>
-            </Content>
-        </div>
+        <Content>
+            <div className="topPart" style={{height: box?.top}}>
+                <Content>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <h1>Agreement</h1>
+                        <p>
+                            I, {details.firstName} {details.lastName}, hereby relinquish my eternal Soul from today onwards for the company Testausserveri.
+                        </p>
+                    </div>
+                </Content>
+            </div>
+        </Content>
     )
 }
 function BottomPart({details}) {
     const box = document.getElementsByClassName("signatureCanvas")[0]?.getBoundingClientRect()
 
     console.log(box)
-    
+    const now = new Date();
     return (
         <div className="bottomPart" style={{paddingTop: `${box?.top + 100}px`}}>
             <Content>
                 <p>
-                    {details.firstName} {details.lastName}
+                    {details.firstName} {details.lastName}, {now.getDate()}.{now.getMonth() + 1}. {now.getFullYear()}
                 </p>
             </Content>
         </div>
