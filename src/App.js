@@ -26,6 +26,7 @@ function App() {
           </div>
       </Content>
       <Signature />
+      <button><b>Submit</b></button>
     </div>
   );
 }
