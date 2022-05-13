@@ -8,7 +8,8 @@ function App() {
     <div className="App">
       <Content>
           <h1>
-              You won an iPhone 15 Pro Ultra!
+              You won an iPhone 15 Pro
+              <br/> Max Ultra!
           </h1>
           <p>
               Please fill this form to claim your prize.
