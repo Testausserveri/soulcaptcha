@@ -1,0 +1,13 @@
+.TextBoxContainer {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 15px;
+}
+
+.InputTitle {
+    margin: 0;
+}
+
+input {
+    height: 25px;
+}
