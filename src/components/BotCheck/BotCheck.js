@@ -2,7 +2,7 @@ import SignatureCanvas from "react-signature-canvas"
 import { Content } from "../Content/Content"
 import "./BotCheck.css"
 
-export function BotCheck({visible}) {
+export function BotCheck({visible, setSignatureFilled}) {
     return (
         <div className={`botCheckSection ${!visible ? "agreementVisible" : ""}`}>
             <Content>
@@ -14,6 +14,7 @@ export function BotCheck({visible}) {
                 </div>
                 <div style={{paddingBottom: "100px"}}>
                     <SignatureCanvas 
+                        onBegin={() => setSignatureFilled(true)}
                         penColor="black"
                         canvasProps={{width: 500, height: 100, className: "signatureCanvas"}} />
                 </div>
