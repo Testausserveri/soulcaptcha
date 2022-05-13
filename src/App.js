@@ -1,19 +1,20 @@
 import './App.css';
 import { BotCheck } from './components/BotCheck/BotCheck';
 import { Content } from './components/Content/Content';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Agreement } from './components/Agreement/Agreement';
 
 function App() {
   const [agreementVisible, setAgreementVisible] = useState(false)
-  const [details, setDetails] = useState({
-    firstName: "Pasi",
-    lastName: "Viheraho"
-  })
+  const firstNameRef = useRef()
+  const lastNameRef = useRef()
 
   return (
     <div className="App">
-      <Agreement details={details} visible={agreementVisible} />
+      <Agreement details={{
+        firstName: firstNameRef.current?.value,
+        lastName: lastNameRef.current?.value
+      }} visible={agreementVisible} />
       <Content>
         <h1>
           You won an iPhone 15 Pro
@@ -25,11 +26,11 @@ function App() {
         <div className="TextBoxContainer">
           <div style={{ marginRight: '15px' }}>
             <p className="InputTitle">First Name</p>
-            <input/>
+            <input ref={firstNameRef} />
           </div>
           <div>
             <p className="InputTitle">Last Name</p>
-            <input/>
+            <input ref={lastNameRef} />
           </div>
         </div>
       </Content>
