@@ -36,3 +36,7 @@
     align-items: flex-end;
     height: 100%;
 }
+
+.topPart .content div {
+    padding-bottom: 2rem;
+}

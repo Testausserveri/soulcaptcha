@@ -12,7 +12,7 @@ function TopPart({details}) {
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <h1>Agreement</h1>
                         <p>
-                            I, {details.firstName} {details.lastName}, hereby relinquish my eternal Soul from today onwards for the company Testausserveri.
+                            I, {details.firstName} {details.lastName}, hereby relinquish my eternal Soul from today onwards for the company Testausserveri ry.
                         </p>
                     </div>
                 </Content>
