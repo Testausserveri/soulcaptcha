@@ -3,10 +3,13 @@ import { BotCheck } from './components/BotCheck/BotCheck';
 import { Content } from './components/Content/Content';
 import { useRef, useState } from 'react';
 import { Agreement } from './components/Agreement/Agreement';
+import { Spinner } from './components/Spinner/Spinner';
 
 function App() {
   const [signatureFilled, setSignatureFilled] = useState(false)
   const [agreementVisible, setAgreementVisible] = useState(false)
+  const [spinning, setSpinning] = useState(false)
+
   const firstNameRef = useRef()
   const lastNameRef = useRef()
 
@@ -16,13 +19,16 @@ function App() {
     if (firstNameRef.current.value.trim().length === 0) errorClasses.push("errorFirstName")
     if (lastNameRef.current.value.trim().length === 0) errorClasses.push("errorLastName")
     if (errorClasses.length > 0) {
-      document.body.classList.add("errorFill", ...errorClasses)
+      document.body.classList.add(...errorClasses)
       setTimeout(() => {
         document.body.classList.remove(...errorClasses)
       }, 1000)
       return
     }
-    setAgreementVisible(true)
+    setSpinning(true)
+    setTimeout(() => {
+      setAgreementVisible(true)
+    }, 1000)
   }
 
   return (
@@ -55,7 +61,9 @@ function App() {
         setSignatureFilled={setSignatureFilled} 
         />
       <Content>
-        <button onClick={() => submit()}>Claim the Prize</button>
+        <button onClick={() => submit()}>
+          {spinning ? <Spinner /> : "Claim your Prize"}
+        </button>
         <span className="fillNotice">Please fill in all fields</span>
       </Content>
     </div>

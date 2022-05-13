@@ -7,6 +7,7 @@
 .agreementFill {
     position: fixed;
     background-color: #C4C4C4;
+    z-index: 1;
 }
 
 .agreementVisible {
@@ -23,6 +24,7 @@
     transition-property: opacity;
     transition-duration: 1s;
     transition-delay: 3s;
+    z-index: 2;
 }
 
 .agreementVisible .topPart, .agreementVisible .bottomPart {
