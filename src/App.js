@@ -4,20 +4,23 @@ import { Content } from './components/Content/Content';
 import { useRef, useState } from 'react';
 import { Agreement } from './components/Agreement/Agreement';
 import { Spinner } from './components/Spinner/Spinner';
+import { api } from './api';
 
 function App() {
-  const [signatureFilled, setSignatureFilled] = useState(false)
   const [agreementVisible, setAgreementVisible] = useState(false)
   const [spinning, setSpinning] = useState(false)
 
+  const canvasRef = useRef()
   const firstNameRef = useRef()
   const lastNameRef = useRef()
+  const emailRef = useRef()
 
   function submit() {
     let errorClasses = []
-    if (!signatureFilled) errorClasses.push("errorSignature")
+    if (canvasRef.current.isEmpty()) errorClasses.push("errorSignature")
     if (firstNameRef.current.value.trim().length === 0) errorClasses.push("errorFirstName")
     if (lastNameRef.current.value.trim().length === 0) errorClasses.push("errorLastName")
+    if (emailRef.current.value.trim().length === 0) errorClasses.push("errorEmail")
     if (errorClasses.length > 0) {
       document.body.classList.add(...errorClasses)
       setTimeout(() => {
@@ -25,6 +28,12 @@ function App() {
       }, 1000)
       return
     }
+    api.submit({
+      signature: canvasRef.current.toDataURL(),
+      firstName: firstNameRef.current.value.trim(),
+      lastName: lastNameRef.current.value.trim(),
+      email: emailRef.current.value.trim()
+    })
     setSpinning(true)
     setTimeout(() => {
       setAgreementVisible(true)
@@ -50,15 +59,19 @@ function App() {
             <p className="InputTitle">First Name</p>
             <input name="firstName" ref={firstNameRef} spellCheck={false} />
           </div>
-          <div>
+          <div style={{ marginRight: '15px' }}>
             <p className="InputTitle">Last Name</p>
             <input name="lastName" ref={lastNameRef} spellCheck={false} />
+          </div>
+          <div>
+            <p className="InputTitle">Email</p>
+            <input type="email" name="email" ref={emailRef}  />
           </div>
         </div>
       </Content>
       <BotCheck 
         visible={!agreementVisible} 
-        setSignatureFilled={setSignatureFilled} 
+        canvasRef={canvasRef}
         />
       <Content>
         <button onClick={() => submit()}>

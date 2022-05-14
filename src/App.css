@@ -17,7 +17,9 @@ input {
   font-size: 1em;
 }
 
-.errorFirstName input[name=firstName], .errorLastName input[name=lastName] {
+.errorFirstName input[name=firstName],
+.errorLastName input[name=lastName],
+.errorEmail input[name=email] {
   background-color: #FFD9D9;
 }
 
