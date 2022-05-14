@@ -23,13 +23,12 @@ function TopPart({details}) {
 function BottomPart({details}) {
     const box = document.getElementsByClassName("signatureCanvas")[0]?.getBoundingClientRect()
 
-    console.log(box)
     const now = new Date();
     return (
         <div className="bottomPart" style={{paddingTop: `${box?.top + 100}px`}}>
             <Content>
                 <p>
-                    {details.firstName} {details.lastName}, {now.getDate()}.{now.getMonth() + 1}. {now.getFullYear()}
+                    {details.firstName} {details.lastName}, {now.getDate()}.{now.getMonth() + 1}.{now.getFullYear()}
                 </p>
             </Content>
         </div>
