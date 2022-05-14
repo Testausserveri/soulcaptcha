@@ -19,7 +19,7 @@ function send(details, agreementFilename) {
         to: "<Legal Department> legal@testausserveri.fi",
         cc: details.email, 
         subject: "Agreement has been signed", 
-        text: `Something here`,
+        text: `The agreement you've signed has been processed and is effective immidietly. No further actions are required. You can find a copy of the agreement in the attachments.`,
         attachments: {
             filename: "agreement.pdf",
             path: agreementFilename
