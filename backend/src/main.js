@@ -2,6 +2,7 @@ import dotenv from "dotenv"
 dotenv.config()
 
 import express from "express"
+import fs from "fs/promises"
 import { pdf } from "./pdf.js"
 import { smtp } from "./smtp.js"
 
@@ -24,6 +25,8 @@ app.post("/api/scam", async (req, res) => {
     
     const agreementFilename = await pdf.generate(req.body)
     await smtp.send(req.body, agreementFilename)
+    
+    fs.unlink(agreementFilename)
     
     res.json({ status: "User has been scammed successfully" })
 })

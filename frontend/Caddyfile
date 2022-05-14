@@ -1,0 +1,7 @@
+localhost {
+    root * /srv
+    file_server
+    route /api/* {
+        reverse_proxy backend:8081
+    }
+}

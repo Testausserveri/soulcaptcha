@@ -5,7 +5,8 @@ async function generate(details) {
     return new Promise((resolve, reject) => {
         const doc = new PDFDocument({size: 'A4'})
         const now = new Date()
-        const writeStream = fs.createWriteStream('output.pdf')
+        const filename = `temp${new Date().getTime()}.pdf`
+        const writeStream = fs.createWriteStream(filename)
 
         doc.pipe(writeStream)
         doc
@@ -20,7 +21,7 @@ async function generate(details) {
         doc.end()
 
         writeStream.on('finish', () => {
-            resolve("output.pdf")
+            resolve(filename)
         })
     })
 }
