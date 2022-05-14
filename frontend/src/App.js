@@ -37,6 +37,7 @@ function App() {
     setSpinning(true)
     setTimeout(() => {
       setAgreementVisible(true)
+      document.title = "Sign an agreement"
     }, 1000)
   }
 
